@@ -50,7 +50,7 @@ module.exports.updateQuantity = async function (req, res) {
             return res.status(404).send("Product not found");
         }
 
-        const newQty = parseInt(found.quantity) + parseInt(req.query.number);
+        const newQty = parseInt(req.query.number);
         const updatedProduct = await Product.findByIdAndUpdate(ID, { quantity: newQty }).exec();
 
         if (!updatedProduct) {
