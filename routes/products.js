@@ -1,7 +1,16 @@
 const express=require('express');
 const router=express.Router();
 
-const homeController=require('../controllers/products_controller');
-router.get('/', homeController.home);
+// initializing products controller
+const productsController = require('../controllers/products_controller');
+// to get all the products
+router.get('/', productsController.products);
+
+// to create a product
+router.post('/create', productsController.create);
+
+// to delete a product using it's ID
+router.delete('/:productID', productsController.delete);
+
 
 module.exports=router;
