@@ -1,15 +1,15 @@
 const Product = require('../models/product');
 
 // function to show all the products
-module.exports.products=function(req,res){
-    Product.find({}, function(err, foundProducts){
-        if(err){
-            res.send(err);
-        }else{
-            res.send(foundProducts);
-        }
-    });
-}
+module.exports.products = async function (req, res) {
+    try {
+        const foundProducts = await Product.find({}).exec();
+        res.send(foundProducts);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+
 
 // function to create a new product
 module.exports.create=function(req,res){
