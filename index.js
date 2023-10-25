@@ -3,6 +3,7 @@ const app=express();
 const port=8000;
 const bodyParser = require('body-parser');
 const db = require('./config/mongoose');
+require('dotenv').config()
 
 
 // using body parser to parse over the request body
